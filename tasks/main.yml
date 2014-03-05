@@ -1,0 +1,10 @@
+---
+# Date and timezone (NTP).
+- name: Set the correct timezone.
+  file: src=/usr/share/zoneinfo/{{ timezone }}  dest=/etc/localtime state=link force=yes
+
+- name: Install NTP.
+  yum: name=ntp state=installed
+
+- name: Ensure NTP is running.
+  service: name=ntpd state=started enabled=yes
