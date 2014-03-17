@@ -5,11 +5,11 @@
 - name: Set the correct timezone.
   file: src=/usr/share/zoneinfo/{{ ntp_timezone }}  dest=/etc/localtime state=link force=yes
 
-- name: Install NTP on RHEL flavors.
+- name: Install NTP (RedHat).
   yum: name=ntp state=installed
   when: ansible_os_family == 'RedHat'
 
-- name: Install NTP on Debian flavors.
+- name: Install NTP (Debian).
   apt: name=ntp state=installed
   when: ansible_os_family == 'Debian'
 
