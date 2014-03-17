@@ -1,6 +1,6 @@
 # Ansible Role: NTP
 
-Installs NTP on RHEL/CentOS 6.x.
+Installs NTP on RHEL/CentOS and Debian/Ubuntu.
 
 ## Requirements
 
