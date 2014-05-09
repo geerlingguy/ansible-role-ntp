@@ -14,4 +14,8 @@
   when: ansible_os_family == 'Debian'
 
 - name: Ensure NTP is running.
-  service: name={{ ntp_daemon }} state=started enabled=yes
+  service: >
+    name={{ ntp_daemon }}
+    state=started
+    enabled=yes
+  when: ntp_enabled
