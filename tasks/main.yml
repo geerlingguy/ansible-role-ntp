@@ -13,9 +13,16 @@
   apt: name=ntp state=installed
   when: ansible_os_family == 'Debian'
 
-- name: Ensure NTP is running.
+- name: Ensure NTP is running and enabled at system start.
   service: >
     name={{ ntp_daemon }}
     state=started
     enabled=yes
   when: ntp_enabled
+
+- name: Ensure NTP is stopped and disabled at system start.
+  service: >
+    name={{ ntp_daemon }}
+    state=stopped
+    enabled=no
+  when: !ntp_enabled
