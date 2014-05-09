@@ -25,4 +25,4 @@
     name={{ ntp_daemon }}
     state=stopped
     enabled=no
-  when: !ntp_enabled
+  when: not ntp_enabled
