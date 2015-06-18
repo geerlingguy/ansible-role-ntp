@@ -1,3 +1,10 @@
 ---
 ntp_enabled: true
 ntp_timezone: America/Chicago
+
+ntp_servers:
+ - 0.us.pool.ntp.org iburst
+ - 1.us.pool.ntp.org iburst
+ - 2.us.pool.ntp.org iburst
+ 
+
