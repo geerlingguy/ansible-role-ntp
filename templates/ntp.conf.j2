@@ -1,6 +1,6 @@
-{{ ansible_managed }}
+# {{ ansible_managed }}
 
- # Default NTP servers for the operating system.
+# Default NTP servers for the operating system.
 {% for item in ntp_servers %}
 server {{ item }}
 {% endfor %} 
