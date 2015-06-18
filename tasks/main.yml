@@ -33,4 +33,4 @@
 
 - name: Setup ntp.conf file and Restart NTP
   template: src=ntp.conf.j2 dest=/etc/ntp.conf
-  notify: restart {{ ntp_daemon }}
+  notify: restart ntp
