@@ -13,6 +13,10 @@
   apt: name=ntp state=installed
   when: ansible_os_family == 'Debian'
 
+- name: Install NTP (FreeBSD).
+  pkgng: name=ntp state=present
+  when: ansible_os_family == 'FreeBSD'
+
 - name: Ensure NTP is running and enabled at system start.
   service: >
     name={{ ntp_daemon }}
