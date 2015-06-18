@@ -1,0 +1,22 @@
+# {{ ansible_managed }}
+
+# Default NTP servers for the operating system.
+{% for item in ntp_servers %}
+server {{ item }}
+{% endfor %} 
+
+# Security:
+#
+# By default, only allow time queries and block all other requests
+# from unauthenticated clients.
+#
+# See http://support.ntp.org/bin/view/Support/AccessRestrictions
+# for more information.
+#
+restrict default kod nomodify notrap nopeer noquery
+restrict -6 default kod nomodify notrap nopeer noquery
+
+# The following settings allow unrestricted access from the localhost
+restrict 127.0.0.1
+restrict -6 ::1
+restrict 127.127.1.0
