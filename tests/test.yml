@@ -1,5 +1,9 @@
 ---
 - hosts: localhost
   remote_user: root
+
+  vars:
+    ntp_enabled: false
+
   roles:
     - ansible-role-ntp
