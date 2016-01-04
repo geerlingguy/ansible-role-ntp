@@ -3,7 +3,11 @@
   include_vars: "{{ ansible_os_family }}.yml"
 
 - name: Set the correct timezone.
-  file: src=/usr/share/zoneinfo/{{ ntp_timezone }}  dest=/etc/localtime state=link force=yes
+  file:
+    src: "/usr/share/zoneinfo/{{ ntp_timezone }}"
+    dest: /etc/localtime
+    state: link
+    force: yes
 
 - name: Install NTP (RedHat).
   yum: name=ntp state=installed
@@ -18,17 +22,17 @@
   when: ansible_os_family == 'FreeBSD'
 
 - name: Ensure NTP is running and enabled at system start.
-  service: >
-    name={{ ntp_daemon }}
-    state=started
-    enabled=yes
+  service:
+    name: "{{ ntp_daemon }}"
+    state: started
+    enabled: yes
   when: ntp_enabled
 
 - name: Ensure NTP is stopped and disabled at system start.
-  service: >
-    name={{ ntp_daemon }}
-    state=stopped
-    enabled=no
+  service:
+    name: "{{ ntp_daemon }}"
+    state: stopped
+    enabled: no
   when: not ntp_enabled
 
 - name: Setup ntp.conf file and Restart NTP
