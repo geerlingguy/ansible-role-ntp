@@ -35,6 +35,6 @@
     enabled: no
   when: not ntp_enabled
 
-- name: Setup ntp.conf file and Restart NTP
+- name: Generate ntp.conf file
   template: src=ntp.conf.j2 dest=/etc/ntp.conf
   notify: restart ntp
