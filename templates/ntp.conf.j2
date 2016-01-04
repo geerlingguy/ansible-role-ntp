@@ -3,7 +3,7 @@
 # Default NTP servers for the operating system.
 {% for item in ntp_servers %}
 server {{ item }}
-{% endfor %} 
+{% endfor %}
 
 # Security:
 #
@@ -13,8 +13,8 @@ server {{ item }}
 # See http://support.ntp.org/bin/view/Support/AccessRestrictions
 # for more information.
 #
-restrict default kod nomodify notrap nopeer noquery
-restrict -6 default kod nomodify notrap nopeer noquery
+restrict default kod limited nomodify notrap nopeer noquery
+restrict -6 default kod limited nomodify notrap nopeer noquery
 
 # The following settings allow unrestricted access from the localhost
 restrict 127.0.0.1
