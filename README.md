@@ -20,6 +20,17 @@ Whether to start the ntpd service and enable it at system boot. On many virtual 
 
 Set the timezone for your server.
 
+    ntp_manage_config: false
+
+Set to true to allow this role to manage the NTP configuration file (`/etc/ntp.conf`).
+
+    ntp_servers:
+     - 0.pool.ntp.org iburst
+     - 1.pool.ntp.org iburst
+     - 2.pool.ntp.org iburst
+     - 3.pool.ntp.org iburst
+
+Specify the NTP servers you'd like to use. Only takes effect if you allow this role to manage NTP's configuration, by setting `ntp_manage_config` to `true`.
 
 ## Dependencies
 
@@ -27,11 +38,9 @@ None.
 
 ## Example Playbook
 
-    - hosts: db-servers
-      vars_files:
-        - vars/main.yml
+    - hosts: all
       roles:
-        - { role: geerlingguy.ntp }
+        - geerlingguy.ntp
 
 *Inside `vars/main.yml`*:
 

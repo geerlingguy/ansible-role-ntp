@@ -21,16 +21,21 @@
   pkgng: name=ntp state=present
   when: ansible_os_family == 'FreeBSD'
 
-- name: Ensure NTP is running and enabled at system start.
+- name: Ensure NTP is running and enabled as configured.
   service:
     name: "{{ ntp_daemon }}"
     state: started
     enabled: yes
   when: ntp_enabled
 
-- name: Ensure NTP is stopped and disabled at system start.
+- name: Ensure NTP is stopped and disabled as configured.
   service:
     name: "{{ ntp_daemon }}"
     state: stopped
     enabled: no
   when: not ntp_enabled
+
+- name: Generate ntp.conf file
+  template: src=ntp.conf.j2 dest=/etc/ntp.conf
+  notify: restart ntp
+  when: ntp_manage_config
