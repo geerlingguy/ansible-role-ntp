@@ -8,28 +8,27 @@
     dest: /etc/localtime
     state: link
     force: yes
-  when: ntp_enabled
 
 - name: Install NTP (RedHat).
   yum: name=ntp state=installed
-  when: ansible_os_family == 'RedHat' and ntp_enabled
+  when: ansible_os_family == 'RedHat'
 
 - name: Install NTP (Debian).
   apt: name=ntp state=installed
-  when: ansible_os_family == 'Debian' and ntp_enabled
+  when: ansible_os_family == 'Debian'
 
 - name: Install NTP (FreeBSD).
   pkgng: name=ntp state=present
-  when: ansible_os_family == 'FreeBSD' and ntp_enabled
+  when: ansible_os_family == 'FreeBSD'
 
-- name: Ensure NTP is running and enabled at system start.
+- name: Ensure NTP is running and enabled as configured.
   service:
     name: "{{ ntp_daemon }}"
     state: started
     enabled: yes
   when: ntp_enabled
 
-- name: Ensure NTP is stopped and disabled at system start.
+- name: Ensure NTP is stopped and disabled as configured.
   service:
     name: "{{ ntp_daemon }}"
     state: stopped
@@ -39,4 +38,4 @@
 - name: Generate ntp.conf file
   template: src=ntp.conf.j2 dest=/etc/ntp.conf
   notify: restart ntp
-  when: ntp_enabled
+  when: ntp_manage_config
