@@ -4,5 +4,10 @@
     ntp_enabled: false
     ntp_manage_config: true
 
+  pre_tasks:
+    - name: Update apt cache.
+      apt: update_cache=yes
+      when: ansible_os_family == 'Debian'
+
   roles:
     - role_under_test
