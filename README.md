@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/geerlingguy/ansible-role-ntp.svg?branch=master)](https://travis-ci.org/geerlingguy/ansible-role-ntp)
 
-Installs NTP on RedHat/CentOS and Debian/Ubuntu Linux servers.
+Installs NTP on RedHat/CentOS, Debian/Ubuntu, Suse and Archlinux, as well as on FreeBSD servers.
 
 ## Requirements
 
