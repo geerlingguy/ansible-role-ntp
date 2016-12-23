@@ -20,5 +20,11 @@ galaxy_info:
     - name: FreeBSD
       versions:
       - all
+    - name: Suse
+      versions:
+      - all
+    - name: Archlinux
+      versions:
+      - all
   galaxy_tags:
     - system
