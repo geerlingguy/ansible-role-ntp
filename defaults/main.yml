@@ -3,6 +3,7 @@ ntp_enabled: true
 ntp_timezone: Etc/UTC
 
 ntp_manage_config: false
+ntp_daemon: ntpd
 ntp_servers:
  - 0.pool.ntp.org iburst
  - 1.pool.ntp.org iburst
