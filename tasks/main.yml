@@ -17,17 +17,9 @@
     force: yes
   when: ansible_os_family == 'Debian'
 
-- name: Install NTP (RedHat).
-  yum: name=ntp state=installed
-  when: ansible_os_family == 'RedHat'
-
-- name: Install NTP (Debian).
-  apt: name=ntp state=installed
-  when: ansible_os_family == 'Debian'
-
-- name: Install NTP (FreeBSD).
-  pkgng: name=ntp state=present
-  when: ansible_os_family == 'FreeBSD'
+- name: Install NTP
+  action: "{{ ansible_pkg_mgr}} name={{ item }} update_cache=yes state={{ util_pkg_state|default('present') }}"
+  with_items: ntp
 
 - name: Ensure NTP is running and enabled as configured.
   service:
