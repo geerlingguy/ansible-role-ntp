@@ -9,3 +9,6 @@ ntp_servers:
  - 1.pool.ntp.org iburst
  - 2.pool.ntp.org iburst
  - 3.pool.ntp.org iburst
+ntp_restrict:
+ - 127.0.0.1
+ - ::1
