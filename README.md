@@ -24,13 +24,23 @@ Set the timezone for your server.
 
 Set to true to allow this role to manage the NTP configuration file (`/etc/ntp.conf`).
 
+    ntp_area: ''
+
+Set the [NTP Pool Area](http://support.ntp.org/bin/view/Servers/NTPPoolServers) to use. Defaults to none, which uses the worldwide pool.
+
     ntp_servers:
-     - 0.pool.ntp.org iburst
-     - 1.pool.ntp.org iburst
-     - 2.pool.ntp.org iburst
-     - 3.pool.ntp.org iburst
+      - "0{{ ntp_area }}.pool.ntp.org iburst"
+      - "1{{ ntp_area }}.pool.ntp.org iburst"
+      - "2{{ ntp_area }}.pool.ntp.org iburst"
+      - "3{{ ntp_area }}.pool.ntp.org iburst"
 
 Specify the NTP servers you'd like to use. Only takes effect if you allow this role to manage NTP's configuration, by setting `ntp_manage_config` to `true`.
+
+    ntp_restrict:
+      - "127.0.0.1"
+      - "::1"
+
+Restrict NTP access to these hosts; loopback only, by default.
 
 ## Dependencies
 

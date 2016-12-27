@@ -3,22 +3,16 @@ ntp_enabled: true
 ntp_timezone: Etc/UTC
 
 ntp_manage_config: false
-### choose ntp server area ###
-# http://support.ntp.org/bin/view/Servers/NTPPoolServers
-###
-# Leave empty for Worldwide Area
-#     Worldwide:    ''
-#          Asia:    '.asia'
-#        Europe:    '.europe'
-# North America:    '.north-america'
-#       Oceania:    '.oceania'
-# South America:    '.south-america'
+
+# NTP server area configuration (leave empty for 'Worldwide').
+# See: http://support.ntp.org/bin/view/Servers/NTPPoolServers
 ntp_area: ''
 ntp_servers:
- - 0{{ ntp_area }}.pool.ntp.org iburst
- - 1{{ ntp_area }}.pool.ntp.org iburst
- - 2{{ ntp_area }}.pool.ntp.org iburst
- - 3{{ ntp_area }}.pool.ntp.org iburst
+  - "0{{ ntp_area }}.pool.ntp.org iburst"
+  - "1{{ ntp_area }}.pool.ntp.org iburst"
+  - "2{{ ntp_area }}.pool.ntp.org iburst"
+  - "3{{ ntp_area }}.pool.ntp.org iburst"
+
 ntp_restrict:
- - 127.0.0.1
- - ::1
+  - "127.0.0.1"
+  - "::1"
