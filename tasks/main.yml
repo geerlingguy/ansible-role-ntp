@@ -18,7 +18,8 @@
   when: ansible_os_family == 'Debian'
 
 - name: Install NTP
-  action: "{{ ansible_pkg_mgr}} name={{ item }} update_cache=yes state={{ util_pkg_state|default('present') }}"
+  #action: "{{ ansible_pkg_mgr}} name={{ item }} update_cache=yes state={{ util_pkg_state|default('present') }}"
+  action: "{{ ansible_pkg_mgr}} name={{ item }} update_cache=yes state={{ default('present') }}"
   with_items: ntp
 
 - name: Ensure NTP is running and enabled as configured.
