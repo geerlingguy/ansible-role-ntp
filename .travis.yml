@@ -7,10 +7,7 @@ env:
   - distro: ubuntu1604
   - distro: ubuntu1404
   - distro: ubuntu1204
-
-before_install:
-  # Pull container.
-  - 'docker pull geerlingguy/docker-${distro}-ansible:latest'
+  - distro: debian8
 
 script:
   # Run tests.

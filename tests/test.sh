@@ -53,8 +53,9 @@ fi
 container_id=$(mktemp)
 
 # Run the container using the supplied OS.
-printf ${green}"Pulling Docker container: geerlingguy/docker-$distro-ansible."${neutral}"\n"
-docker run --detach --volume="$PWD":/etc/ansible/roles/role_under_test:rw $run_opts geerlingguy/docker-$distro-ansible:latest "$init" > "$container_id"
+printf ${green}"Starting Docker container: geerlingguy/docker-$distro-ansible."${neutral}"\n"
+docker pull geerlingguy/docker-$distro-ansible:latest
+docker run --detach --volume="$PWD":/etc/ansible/roles/role_under_test:rw $opts geerlingguy/docker-$distro-ansible:latest $init > "$container_id"
 
 container_id=$(cat $container_id)
 
