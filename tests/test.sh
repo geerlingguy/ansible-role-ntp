@@ -79,7 +79,7 @@ docker exec --tty $container_id env TERM=xterm ansible-playbook /etc/ansible/rol
 # Run Ansible playbook again (idempotence test).
 printf ${green}"Running playbook again: idempotence test"${neutral}
 idempotence=$(mktemp)
-docker exec --tty $container_id ansible-playbook /etc/ansible/roles/role_under_test/tests/$playbook | tee -a $idempotence
+docker exec $container_id ansible-playbook /etc/ansible/roles/role_under_test/tests/$playbook | tee -a $idempotence
 tail $idempotence \
   | grep -q 'changed=0.*failed=0' \
   && (printf ${green}'Idempotence test: pass'${neutral}"\n") \
