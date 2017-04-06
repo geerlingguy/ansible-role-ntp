@@ -8,7 +8,7 @@ env:
   - distro: ubuntu1404
   - distro: ubuntu1204
   - distro: fedora24
-  - distro: debian8
+  # - distro: debian8
 
 script:
   # Download test shim.
