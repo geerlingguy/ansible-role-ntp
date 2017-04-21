@@ -2,10 +2,14 @@
 ntp_enabled: true
 ntp_timezone: Etc/UTC
 
+ntp_daemon: ntpd
+
 ntp_manage_config: false
 
 # NTP server area configuration (leave empty for 'Worldwide').
 # See: http://support.ntp.org/bin/view/Servers/NTPPoolServers
+# Example:
+#   ntp_area: '.europe'
 ntp_area: ''
 ntp_servers:
   - "0{{ ntp_area }}.pool.ntp.org iburst"

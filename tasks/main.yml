@@ -1,6 +1,10 @@
 ---
-- name: Include OS-specific variables.
-  include_vars: "{{ ansible_os_family }}.yml"
+- name: set ntp_daemon to 'ntp' as default
+  set_fact:
+    ntp_daemon: ntp
+  when: (ansible_os_family == 'Debian') or
+        ((ansible_distribution == 'SLES') and (ansible_distribution_major_version == '11'))
+  tags: ntp
 
 - name: Set the correct timezone.
   file:
