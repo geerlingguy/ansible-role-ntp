@@ -2,23 +2,33 @@
 - name: Include OS-specific variables.
   include_vars: "{{ ansible_os_family }}.yml"
 
-- name: Set the correct timezone.
+- name: Configure timezone (For Ansible 2.2+)
+  timezone:
+    name: "{{ ntp_timezone }}"
+  when: ansible_version.full >= "02.02.00.00"
+
+- name: Set the correct timezone. (For Ansible prior 2.2)
   file:
     src: "/usr/share/zoneinfo/{{ ntp_timezone }}"
     dest: /etc/localtime
     state: link
     force: yes
+  when: ansible_version.full < "02.02.00.00"
 
 # Debian family OSes also have an /etc/timezone file.
-- name: Set timezone in /etc/timezone file.
+- name: Set timezone in /etc/timezone file. (For Ansible prior 2.2)
   template:
     src: timezone.j2
     dest: /etc/timezone
     force: yes
-  when: ansible_os_family == 'Debian'
+  when:
+    - ansible_os_family == 'Debian'
+    - ansible_version.full < "02.02.00.00"
 
 - name: Install NTP.
-  package: name=ntp state=present
+  package:
+    name: ntp
+    state: present
 
 - name: Ensure NTP is running and enabled as configured.
   service:
@@ -35,6 +45,8 @@
   when: not ntp_enabled
 
 - name: Generate ntp.conf file
-  template: src=ntp.conf.j2 dest=/etc/ntp.conf
+  template:
+    src: ntp.conf.j2
+    dest: /etc/ntp.conf
   notify: restart ntp
   when: ntp_manage_config
