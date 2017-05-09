@@ -18,7 +18,9 @@
   when: ansible_os_family == 'Debian'
 
 - name: Install NTP.
-  package: name=ntp state=present
+  package:
+    name: ntp
+    state: present
 
 - name: Ensure NTP is running and enabled as configured.
   service:
@@ -35,6 +37,8 @@
   when: not ntp_enabled
 
 - name: Generate ntp.conf file
-  template: src=ntp.conf.j2 dest=/etc/ntp.conf
+  template:
+    src: ntp.conf.j2
+    dest: /etc/ntp.conf
   notify: restart ntp
   when: ntp_manage_config
