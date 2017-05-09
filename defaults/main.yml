@@ -16,3 +16,7 @@ ntp_servers:
 ntp_restrict:
   - "127.0.0.1"
   - "::1"
+
+# Enable local clock when disconnected from the internet
+# See: http://en.linuxreviews.org/NTP_-_Howto_make_the_clock_show_the_correct_time#What_the_fudge.3F
+ntp_enable_local_clock: false

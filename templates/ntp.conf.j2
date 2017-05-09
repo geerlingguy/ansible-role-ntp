@@ -19,6 +19,13 @@ filegen clockstats file clockstats type day enable
 server {{ item }}
 {% endfor %}
 
+{% if ntp_enable_local_clock | bool %}
+# Enable local clock when disconnected from the internet
+# See: http://en.linuxreviews.org/NTP_-_Howto_make_the_clock_show_the_correct_time#What_the_fudge.3F
+server 127.127.1.0 # local clock
+fudge  127.127.1.0 stratum 10
+{% endif %}
+
 # Permit time synchronization with our time source, but do not
 # permit the source to query or modify the service on this system.
 restrict default nomodify notrap nopeer noquery
