@@ -42,6 +42,10 @@ Specify the NTP servers you'd like to use. Only takes effect if you allow this r
 
 Restrict NTP access to these hosts; loopback only, by default.
 
+    ntp_enable_local_clock: false
+
+Set to true to enable [local clock](http://en.linuxreviews.org/NTP_-_Howto_make_the_clock_show_the_correct_time#What_the_fudge.3F) when disconnected from the internet.
+
 ## Dependencies
 
 None.
