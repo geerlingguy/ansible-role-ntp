@@ -2,14 +2,17 @@
 - name: Include OS-specific variables.
   include_vars: "{{ ansible_os_family }}.yml"
 
+- name: Ensure NTP-related packages are installed.
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - ntp
+    - tzdata
+
 - name: Set timezone
   timezone:
     name: "{{ ntp_timezone }}"
-
-- name: Install NTP.
-  package:
-    name: ntp
-    state: present
 
 - name: Ensure NTP is running and enabled as configured.
   service:
