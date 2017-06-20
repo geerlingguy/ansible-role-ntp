@@ -10,6 +10,9 @@
     - ntp
     - tzdata
 
+- include: clock-rhel-6.yml
+  when: ansible_os_family == 'RedHat' and ansible_distribution_version.split('.')[0] == '6'
+
 - name: Set timezone
   timezone:
     name: "{{ ntp_timezone }}"
