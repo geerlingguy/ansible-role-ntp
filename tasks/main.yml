@@ -4,11 +4,14 @@
 
 - name: Ensure NTP-related packages are installed.
   package:
-    name: "{{ item }}"
+    name: ntp
     state: present
-  with_items:
-    - ntp
-    - tzdata
+
+- name: Ensure tzdata package is installed (Linux).
+  package:
+    name: tzdata
+    state: present
+  when: ansible_system == "Linux"
 
 - include: clock-rhel-6.yml
   when: ansible_os_family == 'RedHat' and ansible_distribution_version.split('.')[0] == '6'
