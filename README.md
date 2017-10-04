@@ -29,10 +29,10 @@ Set to true to allow this role to manage the NTP configuration file (`/etc/ntp.c
 Set the [NTP Pool Area](http://support.ntp.org/bin/view/Servers/NTPPoolServers) to use. Defaults to none, which uses the worldwide pool.
 
     ntp_servers:
-      - "0{{ ntp_area }}.pool.ntp.org iburst"
-      - "1{{ ntp_area }}.pool.ntp.org iburst"
-      - "2{{ ntp_area }}.pool.ntp.org iburst"
-      - "3{{ ntp_area }}.pool.ntp.org iburst"
+      - "0.{{ ntp_area }}.pool.ntp.org iburst"
+      - "1.{{ ntp_area }}.pool.ntp.org iburst"
+      - "2.{{ ntp_area }}.pool.ntp.org iburst"
+      - "3.{{ ntp_area }}.pool.ntp.org iburst"
 
 Specify the NTP servers you'd like to use. Only takes effect if you allow this role to manage NTP's configuration, by setting `ntp_manage_config` to `true`.
 

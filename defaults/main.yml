@@ -8,10 +8,10 @@ ntp_manage_config: false
 # See: http://support.ntp.org/bin/view/Servers/NTPPoolServers
 ntp_area: ''
 ntp_servers:
-  - "0{{ ntp_area }}.pool.ntp.org iburst"
-  - "1{{ ntp_area }}.pool.ntp.org iburst"
-  - "2{{ ntp_area }}.pool.ntp.org iburst"
-  - "3{{ ntp_area }}.pool.ntp.org iburst"
+  - "0.{{ ntp_area }}.pool.ntp.org iburst"
+  - "1.{{ ntp_area }}.pool.ntp.org iburst"
+  - "2.{{ ntp_area }}.pool.ntp.org iburst"
+  - "3.{{ ntp_area }}.pool.ntp.org iburst"
 
 ntp_restrict:
   - "127.0.0.1"
