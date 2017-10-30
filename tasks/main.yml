@@ -2,9 +2,13 @@
 - name: Include OS-specific variables.
   include_vars: "{{ ansible_os_family }}.yml"
 
+- name: Include OS- Release specific variables on EL6.
+  include_vars: RedHat6.yml
+  when: ansible_os_family == 'RedHat' and ansible_distribution_major_version == '6'
+
 - name: Ensure NTP-related packages are installed.
   package:
-    name: ntp
+    name: "{{ ntp_package }}"
     state: present
 
 - name: Ensure tzdata package is installed (Linux).
@@ -14,7 +18,7 @@
   when: ansible_system == "Linux"
 
 - include: clock-rhel-6.yml
-  when: ansible_os_family == 'RedHat' and ansible_distribution_version.split('.')[0] == '6'
+  when: ansible_os_family == 'RedHat' and ansible_distribution_major_version == '6'
 
 - name: Set timezone
   timezone:
@@ -34,9 +38,9 @@
     enabled: no
   when: not ntp_enabled
 
-- name: Generate ntp.conf file
+- name: Generate ntp configuration file
   template:
-    src: ntp.conf.j2
-    dest: /etc/ntp.conf
+    src: "{{ ntp_configfile |basename }}.j2"
+    dest: "{{ ntp_configfile }}"
   notify: restart ntp
   when: ntp_manage_config
