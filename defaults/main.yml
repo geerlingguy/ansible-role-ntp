@@ -1,5 +1,10 @@
 ---
-ntp_enabled: true
+ntp_enabled: |-
+  {{   false
+         if ansible_virtualization_role == 'guest'
+         and ansible_virtualization_type == 'openvz'
+  else true }}
+
 ntp_timezone: Etc/UTC
 
 ntp_manage_config: false
