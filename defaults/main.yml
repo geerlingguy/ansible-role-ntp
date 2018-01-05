@@ -1,8 +1,11 @@
 ---
+incompatible_vm_types:
+  - openvz
+
 ntp_enabled: |-
   {{   false
          if ansible_virtualization_role == 'guest'
-         and ansible_virtualization_type == 'openvz'
+         and ansible_virtualization_type in incompatible_vm_types
   else true }}
 
 ntp_timezone: Etc/UTC
