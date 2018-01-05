@@ -1,6 +1,7 @@
 ---
 incompatible_vm_types:
   - openvz
+  - docker
 
 ntp_enabled: |-
   {{   false
