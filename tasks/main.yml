@@ -1,24 +1,29 @@
 ---
 - name: Include OS-specific variables.
   include_vars: "{{ ansible_os_family }}.yml"
+  tags: [ ntp ]
 
 - name: Ensure NTP-related packages are installed.
   package:
     name: ntp
     state: present
+  tags: [ ntp ]
 
 - name: Ensure tzdata package is installed (Linux).
   package:
     name: tzdata
     state: present
   when: ansible_system == "Linux"
+  tags: [ ntp ]
 
 - include: clock-rhel-6.yml
   when: ansible_os_family == 'RedHat' and ansible_distribution_version.split('.')[0] == '6'
+  tags: [ ntp ]
 
 - name: Set timezone
   timezone:
     name: "{{ ntp_timezone }}"
+  tags: [ ntp ]
 
 - name: Ensure NTP is running and enabled as configured.
   service:
@@ -26,6 +31,7 @@
     state: started
     enabled: yes
   when: ntp_enabled
+  tags: [ ntp ]
 
 - name: Ensure NTP is stopped and disabled as configured.
   service:
@@ -33,6 +39,7 @@
     state: stopped
     enabled: no
   when: not ntp_enabled
+  tags: [ ntp ]
 
 - name: Generate ntp.conf file
   template:
@@ -40,3 +47,4 @@
     dest: /etc/ntp.conf
   notify: restart ntp
   when: ntp_manage_config
+  tags: [ ntp ]
