@@ -1,2 +1,3 @@
 ---
 ntp_daemon: ntpd
+ntp_tzdata_package: tzdata
