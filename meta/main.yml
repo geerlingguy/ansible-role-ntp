@@ -31,3 +31,6 @@ galaxy_info:
       - all
   galaxy_tags:
     - system
+    - ntp
+    - date
+    - time
