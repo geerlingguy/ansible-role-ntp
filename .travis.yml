@@ -13,7 +13,7 @@ env:
 
 script:
   # Download test shim.
-  - wget -O ${PWD}/tests/test.sh https://gist.githubusercontent.com/geerlingguy/73ef1e5ee45d8694570f334be385e181/raw/6419f0a8f1b2002f6315df8a2e9d3959fdedc4cd/ansible-role-test.sh
+  - wget -O ${PWD}/tests/test.sh https://gist.githubusercontent.com/geerlingguy/73ef1e5ee45d8694570f334be385e181/raw/
   - chmod +x ${PWD}/tests/test.sh
 
   # Run tests.
