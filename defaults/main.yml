@@ -16,3 +16,8 @@ ntp_servers:
 ntp_restrict:
   - "127.0.0.1"
   - "::1"
+
+ntp_bind_only_interfaces: false
+
+ntp_interfaces:  
+  - "127.0.0.1"

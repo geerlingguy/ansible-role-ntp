@@ -42,6 +42,12 @@ Specify the NTP servers you'd like to use. Only takes effect if you allow this r
 
 Restrict NTP access to these hosts; loopback only, by default.
 
+    ntp_bind_only_interfaces: false
+    ntp_interfaces:
+      - "127.0.0.1"
+
+By default NTP daemon binds to all interfaces. If you set `ntp_bind_only_interfaces` to `true` you could specify interfaces with `ntp_interfaces` (using IPs or aliases localhost, eth0, etc.) 
+
 ## Dependencies
 
 None.
