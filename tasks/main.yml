@@ -2,6 +2,11 @@
 - name: Include OS-specific variables.
   include_vars: "{{ ansible_os_family }}.yml"
 
+- name: Install timezone data.
+  package:
+    name: tzdata
+    state: present
+    
 - name: Configure timezone (For Ansible 2.2+)
   timezone:
     name: "{{ ntp_timezone }}"
