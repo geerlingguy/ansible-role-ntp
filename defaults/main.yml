@@ -1,8 +1,8 @@
 ---
-ntp_enabled: true
+ntp_enabled: True
 ntp_timezone: Etc/UTC
 
-ntp_manage_config: false
+ntp_manage_config: False
 
 # NTP server area configuration (leave empty for 'Worldwide').
 # See: http://support.ntp.org/bin/view/Servers/NTPPoolServers

@@ -34,3 +34,4 @@ galaxy_info:
     - ntp
     - date
     - time
+    - timezone
