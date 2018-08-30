@@ -9,7 +9,7 @@
 
 - name: Ensure tzdata package is installed (Linux).
   package:
-    name: tzdata
+    name: "{{ ntp_tzdata_package }}"
     state: present
   when: ansible_system == "Linux"
 

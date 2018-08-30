@@ -1,0 +1,4 @@
+---
+ntp_daemon: ntpd
+ntp_tzdata_package: timezone
+ntp_driftfile: /var/lib/ntp/drift/ntp.drift
