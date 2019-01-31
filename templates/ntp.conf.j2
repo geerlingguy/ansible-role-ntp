@@ -11,7 +11,7 @@ interface listen {{ item }}
 {% endfor %}
 {% endif %}
 
-driftfile /var/lib/ntp/drift
+driftfile {{ ntp_driftfile }}
 
 # Enable this if you want statistics to be logged.
 #statsdir /var/log/ntpstats/
