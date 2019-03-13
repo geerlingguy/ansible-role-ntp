@@ -13,6 +13,13 @@ filegen loopstats file loopstats type day enable
 filegen peerstats file peerstats type day enable
 filegen clockstats file clockstats type day enable
 
+{% if ntp_tinker_panic is sameas true %}
+# Always reset the clock, even if the new time is more than 1000s away
+# from the current system time. Usefull for VMs that can be paused
+# and much later resumed.
+tinker panic 0
+{% endif %}
+
 # Use public servers from the pool.ntp.org project.
 # Please consider joining the pool (http://www.pool.ntp.org/join.html).
 {% for item in ntp_servers %}

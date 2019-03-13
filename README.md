@@ -42,6 +42,11 @@ Specify the NTP servers you'd like to use. Only takes effect if you allow this r
 
 Restrict NTP access to these hosts; loopback only, by default.
 
+    ntp_tinker_panic: true
+
+Enable tinker panic, usefull for VMs
+
+
 ## Dependencies
 
 None.
