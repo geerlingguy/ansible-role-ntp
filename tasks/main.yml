@@ -2,6 +2,10 @@
 - name: Include OS-specific variables.
   include_vars: "{{ ansible_os_family }}.yml"
 
+- name: Populate service facts
+  service_facts: {}
+  when: ntp_cron_daemon | length > 0
+
 - name: Ensure NTP-related packages are installed.
   package:
     name: ntp
@@ -19,6 +23,7 @@
 - name: Set timezone
   timezone:
     name: "{{ ntp_timezone }}"
+  notify: restart cron
 
 - name: Ensure NTP is running and enabled as configured.
   service:
