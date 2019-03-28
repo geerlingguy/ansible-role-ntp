@@ -24,6 +24,10 @@ Set the timezone for your server.
 
 Set to true to allow this role to manage the NTP configuration file (`/etc/ntp.conf`).
 
+    ntp_cron_daemon: "{{ ntp_default_os_cron }}"
+
+It is recommended to restart crond after changing the timezone. By default, cron service name is auto-detected but you can force it or set to empty to disable this behaviour
+
     ntp_area: ''
 
 Set the [NTP Pool Area](http://support.ntp.org/bin/view/Servers/NTPPoolServers) to use. Defaults to none, which uses the worldwide pool.
@@ -41,6 +45,7 @@ Specify the NTP servers you'd like to use. Only takes effect if you allow this r
       - "::1"
 
 Restrict NTP access to these hosts; loopback only, by default.
+
 
 ## Dependencies
 
