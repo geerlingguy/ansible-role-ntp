@@ -24,7 +24,7 @@ Set the timezone for your server.
 
 Set to true to allow this role to manage the NTP configuration file (`/etc/ntp.conf`).
 
-    ntp_cron_daemon: "{{ ntp_default_os_cron }}"
+    ntp_cron_daemon: "{{ ntp_default_os_cron }}" 
 
 It is recommended to restart crond after changing the timezone. By default, cron service name is auto-detected but you can force it or set to empty to disable this behaviour
 
