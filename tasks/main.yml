@@ -25,7 +25,7 @@
     name: "{{ ntp_daemon }}"
     state: started
     enabled: true
-  when: ntp_enabled
+  when: ntp_enabled|bool
 
 - name: Ensure NTP is stopped and disabled as configured.
   service:
@@ -39,4 +39,4 @@
     src: ntp.conf.j2
     dest: /etc/ntp.conf
   notify: restart ntp
-  when: ntp_manage_config
+  when: ntp_manage_config|bool
