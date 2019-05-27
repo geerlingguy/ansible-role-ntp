@@ -32,7 +32,7 @@
     name: "{{ ntp_daemon }}"
     state: stopped
     enabled: false
-  when: not ntp_enabled|bool
+  when: not (ntp_enabled|bool)
 
 - name: Generate ntp.conf file
   template:
