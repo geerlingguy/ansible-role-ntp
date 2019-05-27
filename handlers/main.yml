@@ -3,4 +3,4 @@
   service:
     name: "{{ ntp_daemon }}"
     state: restarted
-  when: ntp_enabled
+  when: ntp_enabled|bool
