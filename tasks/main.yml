@@ -25,18 +25,18 @@
     name: "{{ ntp_daemon }}"
     state: started
     enabled: true
-  when: ntp_enabled|bool
+  when: ntp_enabled | bool
 
 - name: Ensure NTP is stopped and disabled as configured.
   service:
     name: "{{ ntp_daemon }}"
     state: stopped
     enabled: false
-  when: not (ntp_enabled|bool)
+  when: not (ntp_enabled | bool)
 
 - name: Generate ntp.conf file
   template:
     src: ntp.conf.j2
     dest: /etc/ntp.conf
   notify: restart ntp
-  when: ntp_manage_config|bool
+  when: ntp_manage_config | bool
