@@ -7,11 +7,6 @@ ntp_manage_config: false
 # NTP server area configuration (leave empty for 'Worldwide').
 # See: http://support.ntp.org/bin/view/Servers/NTPPoolServers
 ntp_area: ''
-ntp_servers:
-  - "0{{ '.' + ntp_area if ntp_area else '' }}.pool.ntp.org iburst"
-  - "1{{ '.' + ntp_area if ntp_area else '' }}.pool.ntp.org iburst"
-  - "2{{ '.' + ntp_area if ntp_area else '' }}.pool.ntp.org iburst"
-  - "3{{ '.' + ntp_area if ntp_area else '' }}.pool.ntp.org iburst"
 
 ntp_restrict:
   - "127.0.0.1"

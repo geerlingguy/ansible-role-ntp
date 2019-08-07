@@ -34,6 +34,15 @@
     enabled: false
   when: not (ntp_enabled | bool)
 
+- name: Generate servers list if not specified
+  set_fact:
+    ntp_servers:
+      - "0{{ '.' + ntp_area if ntp_area else '' }}.pool.ntp.org"
+      - "1{{ '.' + ntp_area if ntp_area else '' }}.pool.ntp.org"
+      - "2{{ '.' + ntp_area if ntp_area else '' }}.pool.ntp.org"
+      - "3{{ '.' + ntp_area if ntp_area else '' }}.pool.ntp.org"
+  when: ntp_servers is not defined
+
 - name: Generate ntp.conf file
   template:
     src: ntp.conf.j2
