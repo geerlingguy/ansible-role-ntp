@@ -7,4 +7,4 @@
   template:
     src: clock.j2
     dest: /etc/sysconfig/clock
-  when: clock_file.stat.exists == false
+  when: not clock_file.stat.exists | bool
