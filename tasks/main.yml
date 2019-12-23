@@ -20,6 +20,16 @@
   timezone:
     name: "{{ ntp_timezone }}"
 
+- name: Populate service facts
+  service_facts:
+
+- name: Disable systemd-timesyncd
+  service:
+    name: systemd-timesyncd.service
+    enabled: false
+    state: stopped
+  when: ntp_enabled | bool and "systemd-timesyncd.service" in services
+
 - name: Ensure NTP is running and enabled as configured.
   service:
     name: "{{ ntp_daemon }}"
