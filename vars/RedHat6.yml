@@ -2,3 +2,5 @@
 ntp_daemon: ntpd
 ntp_configfile: /etc/ntp.conf
 ntp_package: ntp
+ntp_tzdata_package: tzdata
+ntp_driftfile: /var/lib/ntp/drift
