@@ -46,7 +46,6 @@ Restrict NTP access to these hosts; loopback only, by default.
 
 Whether to restart the cron daemon after the timezone has changed.
 
-
 ## Dependencies
 
 None.
