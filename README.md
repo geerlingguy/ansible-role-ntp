@@ -54,6 +54,10 @@ Restrict NTP access to these hosts; loopback only, by default.
 
 Whether to restart the cron daemon after the timezone has changed.
 
+    ntp_tinker_panic: true
+
+Enable tinker panic, which is useful when running NTP in a VM.
+
 ## Dependencies
 
 None.

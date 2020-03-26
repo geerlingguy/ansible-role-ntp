@@ -21,3 +21,5 @@ ntp_restrict:
   - "::1"
 
 ntp_cron_handler_enabled: false
+
+ntp_tinker_panic: false
