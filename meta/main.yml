@@ -35,3 +35,6 @@ galaxy_info:
     - date
     - time
     - timezone
+    - chrony
+    - chronyd
+    - synchronization

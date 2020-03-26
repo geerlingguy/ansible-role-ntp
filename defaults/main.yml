@@ -2,6 +2,9 @@
 ntp_enabled: true
 ntp_timezone: Etc/UTC
 
+# ntp_package: ntp
+# ntp_config_file: /etc/ntp.conf
+
 ntp_manage_config: false
 
 # NTP server area configuration (leave empty for 'Worldwide').
@@ -16,5 +19,7 @@ ntp_servers:
 ntp_restrict:
   - "127.0.0.1"
   - "::1"
+
+ntp_cron_handler_enabled: false
 
 ntp_tinker_panic: false
