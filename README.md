@@ -20,6 +20,14 @@ Whether to start the ntpd service and enable it at system boot. On many virtual 
 
 Set the timezone for your server.
 
+    ntp_package: ntp
+
+The package to install which provides NTP functionality. The default is `ntp` for most platforms, or `chrony` on RHEL/CentOS 7 and later.
+
+    ntp_config_file: /etc/ntp.conf
+
+The path to the NTP configuration file. The default is `/etc/ntp.conf` for most platforms, or `/etc/chrony.conf` on RHEL/CentOS 7 and later.
+
     ntp_manage_config: false
 
 Set to true to allow this role to manage the NTP configuration file (`/etc/ntp.conf`).
