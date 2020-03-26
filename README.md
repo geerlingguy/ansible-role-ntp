@@ -42,6 +42,10 @@ Specify the NTP servers you'd like to use. Only takes effect if you allow this r
 
 Restrict NTP access to these hosts; loopback only, by default.
 
+    ntp_cron_handler_enabled: false
+
+Whether to restart the cron daemon after the timezone has changed.
+
 ## Dependencies
 
 None.

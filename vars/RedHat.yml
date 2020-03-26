@@ -3,3 +3,5 @@ ntp_daemon: chronyd
 ntp_configfile: /etc/chrony.conf
 ntp_package: chrony
 ntp_tzdata_package: tzdata
+ntp_driftfile: /var/lib/ntp/drift
+ntp_cron_daemon: crond

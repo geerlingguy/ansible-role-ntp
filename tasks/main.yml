@@ -23,6 +23,7 @@
 - name: Set timezone
   timezone:
     name: "{{ ntp_timezone }}"
+  notify: restart cron
 
 - name: Ensure NTP is running and enabled as configured.
   service:

@@ -18,3 +18,5 @@ ntp_servers:
 ntp_restrict:
   - "127.0.0.1"
   - "::1"
+
+ntp_cron_handler_enabled: false
