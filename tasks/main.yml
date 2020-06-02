@@ -18,6 +18,11 @@
     ntp_config_file: "{{ __ntp_config_file }}"
   when: ntp_config_file is not defined
 
+- name: Set the ntp_daemon variable.
+  set_fact:
+    ntp_daemon: "{{ __ntp_daemon }}"
+  when: ntp_daemon is not defined
+
 - name: Ensure NTP package is installed.
   package:
     name: "{{ ntp_package }}"
