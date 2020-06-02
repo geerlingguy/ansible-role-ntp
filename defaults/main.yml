@@ -2,6 +2,7 @@
 ntp_enabled: true
 ntp_timezone: Etc/UTC
 
+# ntp_daemon: [various]
 # ntp_package: ntp
 # ntp_config_file: /etc/ntp.conf
 

@@ -24,6 +24,10 @@ Set the timezone for your server.
 
 The package to install which provides NTP functionality. The default is `ntp` for most platforms, or `chrony` on RHEL/CentOS 7 and later.
 
+    ntp_daemon: [various]
+
+The default NTP daemon should be correct for your distribution, but there are some cases where you may want to override the default, e.g. if you're running `ntp` on newer versions of RHEL/CentOS.
+
     ntp_config_file: /etc/ntp.conf
 
 The path to the NTP configuration file. The default is `/etc/ntp.conf` for most platforms, or `/etc/chrony.conf` on RHEL/CentOS 7 and later.
