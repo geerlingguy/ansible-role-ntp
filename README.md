@@ -36,6 +36,10 @@ The path to the NTP configuration file. The default is `/etc/ntp.conf` for most 
 
 Set to true to allow this role to manage the NTP configuration file (`/etc/ntp.conf`).
 
+    ntp_driftfile: [various]
+
+The default NTP driftfile should be correct for your distribution, but there are some cases where you may want to override the default.
+
     ntp_area: ''
 
 Set the [NTP Pool Area](http://support.ntp.org/bin/view/Servers/NTPPoolServers) to use. Defaults to none, which uses the worldwide pool.

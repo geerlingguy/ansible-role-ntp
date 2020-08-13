@@ -8,6 +8,11 @@
     - ansible_os_family == 'RedHat'
     - ansible_distribution_major_version == '6'
 
+- name: Set the ntp_driftfile variable.
+  set_fact:
+    ntp_driftfile: "{{ __ntp_driftfile }}"
+  when: ntp_driftfile is not defined
+
 - name: Set the ntp_package variable.
   set_fact:
     ntp_package: "{{ __ntp_package }}"
