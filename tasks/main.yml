@@ -44,12 +44,12 @@
     - ansible_os_family == 'RedHat'
     - ansible_distribution_major_version == '6'
 
-- name: Set timezone
+- name: Set timezone.
   timezone:
     name: "{{ ntp_timezone }}"
   notify: restart cron
 
-- name: Populate service facts
+- name: Populate service facts.
   service_facts:
 
 - name: Disable systemd-timesyncd if it's running but ntp is enabled.
@@ -58,8 +58,8 @@
     enabled: false
     state: stopped
   when:
-  - ntp_enabled | bool
-  - '"systemd-timesyncd.service" in services'
+    - ntp_enabled | bool
+    - '"systemd-timesyncd.service" in services'
 
 - name: Ensure NTP is running and enabled as configured.
   service:
@@ -75,7 +75,7 @@
     enabled: false
   when: not (ntp_enabled | bool)
 
-- name: Generate ntp configuration file
+- name: Generate ntp configuration file.
   template:
     src: "{{ ntp_config_file | basename }}.j2"
     dest: "{{ ntp_config_file }}"
