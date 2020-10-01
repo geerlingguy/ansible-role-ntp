@@ -49,6 +49,18 @@
     name: "{{ ntp_timezone }}"
   notify: restart cron
 
+- name: Populate service facts
+  service_facts:
+
+- name: Disable systemd-timesyncd if it's running but ntp is enabled.
+  service:
+    name: systemd-timesyncd.service
+    enabled: false
+    state: stopped
+  when:
+  - ntp_enabled | bool
+  - '"systemd-timesyncd.service" in services'
+
 - name: Ensure NTP is running and enabled as configured.
   service:
     name: "{{ ntp_daemon }}"
