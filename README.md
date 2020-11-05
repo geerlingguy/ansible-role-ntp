@@ -1,6 +1,6 @@
 # Ansible Role: NTP
 
-[![Build Status](https://travis-ci.com/geerlingguy/ansible-role-ntp.svg?branch=master)](https://travis-ci.com/geerlingguy/ansible-role-ntp)
+[![CI](https://github.com/geerlingguy/ansible-role-ntp/workflows/CI/badge.svg?event=push)](https://github.com/geerlingguy/ansible-role-ntp/actions?query=workflow%3ACI)
 
 Installs NTP on Linux.
 
