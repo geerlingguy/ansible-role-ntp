@@ -25,7 +25,9 @@ rtcsync
 #minsources 2
 
 # Allow NTP client access from local network.
-#allow 192.168.0.0/16
+{% for item in ntp_restrict %}
+restrict {{ item }}
+{% endfor %}
 
 # Serve time even if not synchronized to a time source.
 #local stratum 10
