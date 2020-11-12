@@ -52,6 +52,10 @@ Set the [NTP Pool Area](http://support.ntp.org/bin/view/Servers/NTPPoolServers) 
 
 Specify the NTP servers you'd like to use. Only takes effect if you allow this role to manage NTP's configuration, by setting `ntp_manage_config` to `True`.
 
+    ntp_no_pool: true
+
+Using 'server' directive for ntp_servers instead of 'pool'. Suitable for specific/old servers which cannot respond properly as pool.
+
     ntp_restrict:
       - "127.0.0.1"
       - "::1"
