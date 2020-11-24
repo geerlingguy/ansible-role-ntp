@@ -60,20 +60,25 @@
   when:
     - ntp_enabled | bool
     - '"systemd-timesyncd.service" in services'
+    - not (ansible_check_mode | bool)
 
 - name: Ensure NTP is running and enabled as configured.
   service:
     name: "{{ ntp_daemon }}"
     state: started
     enabled: true
-  when: ntp_enabled | bool
+  when:
+    - ntp_enabled | bool
+    - not (ansible_check_mode | bool)
 
 - name: Ensure NTP is stopped and disabled as configured.
   service:
     name: "{{ ntp_daemon }}"
     state: stopped
     enabled: false
-  when: not (ntp_enabled | bool)
+  when:
+    - not (ntp_enabled | bool)
+    - not (ansible_check_mode | bool)
 
 - name: Generate ntp configuration file.
   template:
