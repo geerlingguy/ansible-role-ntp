@@ -1,7 +1,0 @@
----
-__ntp_daemon: ntpd
-ntp_tzdata_package: tzdata
-__ntp_package: ntp
-__ntp_config_file: /etc/ntp.conf
-__ntp_driftfile: /var/lib/ntp/drift
-ntp_cron_daemon: crond

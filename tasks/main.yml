@@ -2,12 +2,6 @@
 - name: Include OS-specific variables.
   include_vars: "{{ ansible_os_family }}.yml"
 
-- name: Include OS-Release specific variables on RHEL 6.
-  include_vars: RedHat-6.yml
-  when:
-    - ansible_os_family == 'RedHat'
-    - ansible_distribution_major_version == '6'
-
 - name: Set the ntp_driftfile variable.
   set_fact:
     ntp_driftfile: "{{ __ntp_driftfile }}"
@@ -38,11 +32,6 @@
     name: "{{ ntp_tzdata_package }}"
     state: present
   when: ansible_system == "Linux"
-
-- include_tasks: clock-rhel-6.yml
-  when:
-    - ansible_os_family == 'RedHat'
-    - ansible_distribution_major_version == '6'
 
 - name: Set timezone.
   timezone:
