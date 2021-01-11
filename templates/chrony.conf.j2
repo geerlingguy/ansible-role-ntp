@@ -8,7 +8,7 @@ server {{ server }}
 # Please consider joining the pool (http://www.pool.ntp.org/join.html).
 
 # Record the rate at which the system clock gains/losses time.
-driftfile /var/lib/chrony/drift
+driftfile {{ ntp_driftfile }}
 
 # Allow the system clock to be stepped in the first three updates
 # if its offset is larger than 1 second.
