@@ -38,17 +38,20 @@
     name: "{{ ntp_timezone }}"
   notify: restart cron
 
-- name: Populate service facts.
-  service_facts:
+- name: Linux | timesyncd tasks
+  block:
+    - name: Populate service facts.
+      service_facts:
 
-- name: Disable systemd-timesyncd if it's running but ntp is enabled.
-  service:
-    name: systemd-timesyncd.service
-    enabled: false
-    state: stopped
-  when:
-    - ntp_enabled | bool
-    - '"systemd-timesyncd.service" in services'
+    - name: Disable systemd-timesyncd if it's running but ntp is enabled.
+      service:
+        name: systemd-timesyncd.service
+        enabled: false
+        state: stopped
+      when:
+        - ntp_enabled | bool
+        - '"systemd-timesyncd.service" in services'
+  when: '"FreeBSD" not in ansible_os_family'
 
 - name: Ensure NTP is running and enabled as configured.
   service:
