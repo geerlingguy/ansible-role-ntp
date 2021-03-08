@@ -66,6 +66,10 @@ Whether to restart the cron daemon after the timezone has changed.
 
 Enable tinker panic, which is useful when running NTP in a VM.
 
+    ntp_logfile: "/var/log/ntp"
+
+Define an alternate logfile to be used instead of the syslog facility.
+
 ## Dependencies
 
 None.
