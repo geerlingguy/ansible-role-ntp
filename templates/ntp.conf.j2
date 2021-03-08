@@ -76,3 +76,8 @@ disable monitor
 # next lines. Please do this only if you trust everybody on the network!
 #disable auth
 #broadcastclient
+
+{% if ntp_logfile is defined %}
+# Specify alternate logfile
+logfile {{ ntp_logfile }}
+{% endif %}
