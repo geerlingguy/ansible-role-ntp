@@ -25,3 +25,5 @@ ntp_restrict:
 ntp_cron_handler_enabled: false
 
 ntp_tinker_panic: false
+
+# ntp_logfile: /var/log/ntp
