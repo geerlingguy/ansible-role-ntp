@@ -26,16 +26,19 @@
   package:
     name: "{{ ntp_package }}"
     state: present
+  become: yes
 
 - name: Ensure tzdata package is installed (Linux).
   package:
     name: "{{ ntp_tzdata_package }}"
     state: present
+  become: yes
   when: ansible_system == "Linux"
 
 - name: Set timezone.
   timezone:
     name: "{{ ntp_timezone }}"
+  become: yes
   notify: restart cron
 
 - name: Populate service facts.
@@ -46,6 +49,7 @@
     name: systemd-timesyncd.service
     enabled: false
     state: stopped
+  become: yes
   when:
     - ntp_enabled | bool
     - '"systemd-timesyncd.service" in services'
@@ -55,6 +59,7 @@
     name: "{{ ntp_daemon }}"
     state: started
     enabled: true
+  become: yes
   when: ntp_enabled | bool
 
 - name: Ensure NTP is stopped and disabled as configured.
@@ -62,6 +67,7 @@
     name: "{{ ntp_daemon }}"
     state: stopped
     enabled: false
+  become: yes
   when: not (ntp_enabled | bool)
 
 - name: Generate ntp configuration file.
@@ -69,5 +75,6 @@
     src: "{{ ntp_config_file | basename }}.j2"
     dest: "{{ ntp_config_file }}"
     mode: 0644
+  become: yes
   notify: restart ntp
   when: ntp_manage_config | bool
