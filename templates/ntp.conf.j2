@@ -30,6 +30,9 @@ pool {{ item }}
 # permit the source to query or modify the service on this system.
 restrict default nomodify notrap nopeer noquery
 
+# Allow pool associations
+restrict source nomodify notrap noquery
+
 # Permit all access over the loopback interface.  This could
 # be tightened as well, but to do so would effect some of
 # the administrative functions.
