@@ -50,13 +50,6 @@
     - ntp_enabled | bool
     - '"systemd-timesyncd.service" in services'
 
-- name: Ensure NTP is running and enabled as configured.
-  service:
-    name: "{{ ntp_daemon }}"
-    state: started
-    enabled: true
-  when: ntp_enabled | bool
-
 - name: Ensure NTP is stopped and disabled as configured.
   service:
     name: "{{ ntp_daemon }}"
@@ -71,3 +64,10 @@
     mode: 0644
   notify: restart ntp
   when: ntp_manage_config | bool
+
+- name: Ensure NTP is running and enabled as configured.
+  service:
+    name: "{{ ntp_daemon }}"
+    state: started
+    enabled: true
+  when: ntp_enabled | bool
