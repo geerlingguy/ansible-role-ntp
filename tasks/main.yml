@@ -16,7 +16,9 @@
 - name: Set the ntp_package variable.
   set_fact:
     ntp_package: "{{ __ntp_package }}"
-  when: ntp_package is not defined
+  when:
+    - ntp_package is not defined
+    - not ntp_skip_install
 
 - name: Set the ntp_config_file variable.
   set_fact:
@@ -32,12 +34,15 @@
   package:
     name: "{{ ntp_package }}"
     state: present
+  when: not ntp_skip_install
 
 - name: Ensure tzdata package is installed (Linux).
   package:
     name: "{{ ntp_tzdata_package }}"
     state: present
-  when: ansible_system == "Linux"
+  when:
+    - ansible_system == "Linux"
+    - not ntp_skip_install
 
 - include_tasks: clock-rhel-6.yml
   when:
