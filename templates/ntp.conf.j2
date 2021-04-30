@@ -23,7 +23,7 @@ tinker panic 0
 # Use public servers from the pool.ntp.org project.
 # Please consider joining the pool (http://www.pool.ntp.org/join.html).
 {% for item in ntp_servers %}
-pool {{ item }}
+{{ ntp_server_keyword }} {{ item }}
 {% endfor %}
 
 # Permit time synchronization with our time source, but do not

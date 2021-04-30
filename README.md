@@ -42,6 +42,10 @@ The default NTP driftfile should be correct for your distribution, but there are
 
     ntp_area: ''
 
+Sets the keyword used for servers in the NTP configuration file. The keyword pool is a good choice when DNS resolve is an option, if not you should use server instead.
+
+    ntp_server_keyword: pool
+
 Set the [NTP Pool Area](http://support.ntp.org/bin/view/Servers/NTPPoolServers) to use. Defaults to none, which uses the worldwide pool.
 
     ntp_servers:
