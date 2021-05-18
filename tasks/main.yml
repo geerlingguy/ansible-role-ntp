@@ -10,7 +10,7 @@
 - name: Set the ntp_package variable.
   set_fact:
     ntp_package: "{{ __ntp_package }}"
-  when: ntp_package is not defined
+  when: ntp_package is not defined and __ntp_package is defined
 
 - name: Set the ntp_config_file variable.
   set_fact:
@@ -26,6 +26,7 @@
   package:
     name: "{{ ntp_package }}"
     state: present
+  when: ntp_package is defined
 
 - name: Ensure tzdata package is installed (Linux).
   package:
@@ -47,6 +48,7 @@
     enabled: false
     state: stopped
   when:
+    - ansible_system == "Linux"
     - ntp_enabled | bool
     - '"systemd-timesyncd.service" in services'
 
