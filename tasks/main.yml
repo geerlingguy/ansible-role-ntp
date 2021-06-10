@@ -57,6 +57,29 @@
     enabled: true
   when: ntp_enabled | bool
 
+- name: Make sure NTP is restarted if stopped unintentionally.
+  block:
+    - name: Create directory for ntp service override.
+      file:
+        path: "/etc/systemd/system/ntp.service.d"
+        state: directory
+        mode: '0755'
+    - name: Make ntp service restart if the process exits for any reason.
+      copy:
+        content: |
+          [Service]
+          Restart=always
+        dest: "/etc/systemd/system/ntp.service.d/override.conf"
+        mode: '0644'
+      register: ntp_service_config_override
+    - name: Reload daemon to reread the configs
+      systemd:
+        daemon_reload: true
+      when: ntp_service_config_override is changed
+  when:
+    - ntp_enabled | bool
+    - '"systemd-timesyncd.service" in services'
+
 - name: Ensure NTP is stopped and disabled as configured.
   service:
     name: "{{ ntp_daemon }}"
