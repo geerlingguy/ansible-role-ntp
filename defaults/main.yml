@@ -5,6 +5,7 @@ ntp_timezone: Etc/UTC
 # ntp_daemon: [various]
 # ntp_package: ntp
 # ntp_config_file: /etc/ntp.conf
+ntp_config_backup: 'no'
 # ntp_driftfile: [various]
 
 ntp_manage_config: false
