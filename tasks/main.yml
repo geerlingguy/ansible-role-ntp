@@ -49,6 +49,7 @@
   when:
     - ntp_enabled | bool
     - '"systemd-timesyncd.service" in services'
+    - '"status" in services["systemd-timesyncd.service"]'
     - services["systemd-timesyncd.service"]["status"] != "not-found"
 
 - name: Ensure NTP is running and enabled as configured.
