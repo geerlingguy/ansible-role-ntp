@@ -1,8 +1,8 @@
 # {{ ansible_managed }}
 
 # These servers were defined in the installation:
-{% for server in ntp_servers %}
-server {{ server }}
+{%or server in ntp_servers %}
+pool {{ server }}
 {% endfor %}
 # Use public servers from the pool.ntp.org project.
 # Please consider joining the pool (http://www.pool.ntp.org/join.html).
