@@ -66,6 +66,15 @@ Whether to restart the cron daemon after the timezone has changed.
 
 Enable tinker panic, which is useful when running NTP in a VM.
 
+## Not satisfied with the bundled templates? Make your own !
+
+The templates packaged with this role are intended to be very generic.
+
+If the default template doesn't suit your needs, you can replace it with your own. What do you need to do:
+* create a `templates` directory at the same level as your playbook
+* create a `templates\myntp.conf.j2` file (just choose a different name from the default template)
+* in your playbook set the var `ntp_config_file_template: myntp.conf.j2`
+
 ## Dependencies
 
 None.
