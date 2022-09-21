@@ -4,11 +4,14 @@
 {% for server in ntp_servers %}
 server {{ server }}
 {% endfor %}
+{% for server in ntp_pool %}
+pool {{ server }}
+{% endfor %}
 # Use public servers from the pool.ntp.org project.
 # Please consider joining the pool (http://www.pool.ntp.org/join.html).
 
 # Record the rate at which the system clock gains/losses time.
-driftfile /var/lib/chrony/drift
+driftfile {{ ntp_driftfile }}
 
 # Allow the system clock to be stepped in the first three updates
 # if its offset is larger than 1 second.
@@ -24,8 +27,10 @@ rtcsync
 # the system clock.
 #minsources 2
 
-# Allow NTP client access from local network.
-#allow 192.168.0.0/16
+# Allow rules.
+{% for item in ntp_allow %}
+allow {{ item }}
+{% endfor %}
 
 # Serve time even if not synchronized to a time source.
 #local stratum 10
