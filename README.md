@@ -40,6 +40,14 @@ Set to true to allow this role to manage the NTP configuration file (`/etc/ntp.c
 
 The default NTP driftfile should be correct for your distribution, but there are some cases where you may want to override the default.
 
+    ntp_restart_enabled: true
+
+Set to true to add the capability for ntp service to recover from a failed status in case, for eg. a machine has been shutdown for a long period.
+
+    ntp_service_config_file: /lib/systemd/system/ntp.service
+
+The path to the NTP serivce file. The default is `/lib/systemd/system/ntp.service` for most platforms.
+
     ntp_area: ''
 
 Set the [NTP Pool Area](http://support.ntp.org/bin/view/Servers/NTPPoolServers) to use. Defaults to none, which uses the worldwide pool.

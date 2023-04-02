@@ -72,3 +72,16 @@
     mode: 0644
   notify: restart ntp
   when: ntp_manage_config | bool
+
+- name: Set ntp service restart options
+  ansible.builtin.lineinfile:
+    path: "{{ ntp_service_config_file }}"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    insertafter: '^\[Service\]'
+    state: "{{ 'present' if ntp_restart_enabled else 'absent' }}"
+  loop:
+    - regexp: "^RestartSec="
+      line: "RestartSec=5s"
+    - regexp: "^Restart="
+      line: "Restart=on-failure"

@@ -5,9 +5,11 @@ ntp_timezone: Etc/UTC
 # ntp_daemon: [various]
 # ntp_package: ntp
 # ntp_config_file: /etc/ntp.conf
-# ntp_driftfile: [various]
 
 ntp_manage_config: false
+# ntp_driftfile: [various]
+ntp_restart_enabled: true
+ntp_service_config_file: /lib/systemd/system/ntp.service
 
 # NTP server area configuration (leave empty for 'Worldwide').
 # See: http://support.ntp.org/bin/view/Servers/NTPPoolServers
