@@ -45,7 +45,7 @@ jobs:
           - rockylinux8
           - ubuntu2204
           - ubuntu2004
-          # - debian12  # Having weird idempotence issue.
+          - debian12
           - debian11
 
     steps:
