@@ -1,3 +1,4 @@
+---
 __ntp_daemon: ntpsec
 ntp_tzdata_package: tzdata
 __ntp_package: ntpsec
