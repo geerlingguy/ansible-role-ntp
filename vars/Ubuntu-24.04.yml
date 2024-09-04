@@ -1,0 +1,7 @@
+---
+__ntp_daemon: ntpsec
+ntp_tzdata_package: tzdata
+__ntp_package: ntpsec
+__ntp_config_file: /etc/ntpsec/ntp.conf
+__ntp_driftfile: /var/lib/ntpsec/ntp.drift
+ntp_cron_daemon: cron
