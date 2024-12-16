@@ -66,6 +66,10 @@ Whether to restart the cron daemon after the timezone has changed.
 
 Enable tinker panic, which is useful when running NTP in a VM.
 
+    ntp_chrony_maxdistance: '3'
+
+Increase the maximum root distance between the host & the ntp source.
+
 ## Dependencies
 
 None.
