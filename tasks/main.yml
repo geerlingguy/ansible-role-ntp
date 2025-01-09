@@ -1,52 +1,52 @@
 ---
 - name: Include OS-specific variables.
-  include_vars: "{{ item }}"
+  ansible.builtin.include_vars: "{{ item }}"
   with_first_found:
     - "{{ ansible_facts['distribution'] + '-' + ansible_facts['distribution_version'] }}.yml"
     - "{{ ansible_facts['os_family'] + '-' + ansible_facts['distribution_major_version'] }}.yml"
     - "{{ ansible_facts['os_family'] }}.yml"
 
 - name: Set the ntp_driftfile variable.
-  set_fact:
+  ansible.builtin.set_fact:
     ntp_driftfile: "{{ __ntp_driftfile }}"
   when: ntp_driftfile is not defined
 
 - name: Set the ntp_package variable.
-  set_fact:
+  ansible.builtin.set_fact:
     ntp_package: "{{ __ntp_package }}"
   when: ntp_package is not defined
 
 - name: Set the ntp_config_file variable.
-  set_fact:
+  ansible.builtin.set_fact:
     ntp_config_file: "{{ __ntp_config_file }}"
   when: ntp_config_file is not defined
 
 - name: Set the ntp_daemon variable.
-  set_fact:
+  ansible.builtin.set_fact:
     ntp_daemon: "{{ __ntp_daemon }}"
   when: ntp_daemon is not defined
 
 - name: Ensure NTP package is installed.
-  package:
+  ansible.builtin.package:
     name: "{{ ntp_package }}"
     state: present
 
 - name: Ensure tzdata package is installed (Linux).
-  package:
+  ansible.builtin.package:
     name: "{{ ntp_tzdata_package }}"
     state: present
   when: ansible_system == "Linux"
 
 - name: Set timezone.
-  timezone:
+  community.general.timezone:
     name: "{{ ntp_timezone }}"
   notify: restart cron
 
 - name: Populate service facts.
-  service_facts:
+  ansible.builtin.service_facts:
 
 - name: Disable systemd-timesyncd if it's running but ntp is enabled.
-  service:
+  ansible.builtin.service:
     name: systemd-timesyncd.service
     enabled: false
     state: stopped
@@ -56,7 +56,7 @@
     - services["systemd-timesyncd.service"]["status"] != "not-found"
 
 - name: Ensure NTP is running and enabled as configured.
-  service:
+  ansible.builtin.service:
     name: "{{ ntp_daemon }}"
     state: started
     enabled: true
@@ -64,7 +64,7 @@
   ignore_errors: "{{ ansible_check_mode }}"
 
 - name: Ensure NTP is stopped and disabled as configured.
-  service:
+  ansible.builtin.service:
     name: "{{ ntp_daemon }}"
     state: stopped
     enabled: false
@@ -72,7 +72,7 @@
   ignore_errors: "{{ ansible_check_mode }}"
 
 - name: Generate ntp configuration file.
-  template:
+  ansible.builtin.template:
     src: "{{ ntp_config_file | basename }}.j2"
     dest: "{{ ntp_config_file }}"
     mode: 0644
