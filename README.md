@@ -72,7 +72,10 @@ Increase the maximum root distance between the host & the ntp source.
 
 ## Dependencies
 
-None.
+Requires the Ansible Galaxy Collection `community.general` to be installed:
+```bash
+ansible-galaxy collection install community.general
+```
 
 ## Example Playbook
 
