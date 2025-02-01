@@ -1,0 +1,5 @@
+---
+collections:
+  - name: community.general
+    version: ">=10.2.0"
+    source: https://galaxy.ansible.com

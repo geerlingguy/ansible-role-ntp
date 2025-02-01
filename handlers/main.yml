@@ -1,12 +1,12 @@
 ---
-- name: restart ntp
-  service:
+- name: Restart ntp
+  ansible.builtin.service:
     name: "{{ ntp_daemon }}"
     state: restarted
   when: ntp_enabled | bool
 
-- name: restart cron
-  service:
+- name: Restart cron
+  ansible.builtin.service:
     name: "{{ ntp_cron_daemon }}"
     state: restarted
   when: ntp_cron_handler_enabled | bool
