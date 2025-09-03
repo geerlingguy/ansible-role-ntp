@@ -52,7 +52,7 @@ Set the [NTP Pool Area](http://support.ntp.org/bin/view/Servers/NTPPoolServers) 
 
 Set the non-pool NTP servers to use. Defaults to none.
 
-    ntp_servers_no_pool:
+    ntp_servers_non_pool:
       - "ntp.ubuntu.com"
 
 Specify the NTP servers you'd like to use. Only takes effect if you allow this role to manage NTP's configuration, by setting `ntp_manage_config` to `True`.
