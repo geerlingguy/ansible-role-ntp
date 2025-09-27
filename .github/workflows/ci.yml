@@ -44,6 +44,7 @@ jobs:
           - rockylinux9
           - ubuntu2404
           - ubuntu2204
+          - debian13
           - debian12
           - debian11
 
