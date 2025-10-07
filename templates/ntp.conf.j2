@@ -26,6 +26,10 @@ tinker panic 0
 pool {{ item }}
 {% endfor %}
 
+{% for item in ntp_servers_non_pool %}
+server {{ item }}
+{% endfor %}
+
 # Permit time synchronization with our time source, but do not
 # permit the source to query or modify the service on this system.
 restrict default nomodify notrap nopeer noquery
