@@ -18,6 +18,9 @@ ntp_servers:
   - "2{{ '.' + ntp_area if ntp_area else '' }}.pool.ntp.org iburst"
   - "3{{ '.' + ntp_area if ntp_area else '' }}.pool.ntp.org iburst"
 
+# Single (non-pooled) NTP servers
+ntp_servers_non_pool: []
+
 ntp_restrict:
   - "127.0.0.1"
   - "::1"
