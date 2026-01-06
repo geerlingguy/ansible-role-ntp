@@ -35,7 +35,7 @@
   package:
     name: "{{ ntp_tzdata_package }}"
     state: present
-  when: ansible_system == "Linux"
+  when: ansible_facts.system == "Linux"
 
 - name: Set timezone.
   timezone:
