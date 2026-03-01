@@ -52,8 +52,8 @@
     state: stopped
   when:
     - ntp_enabled | bool
-    - '"systemd-timesyncd.service" in services'
-    - services["systemd-timesyncd.service"]["status"] != "not-found"
+    - '"systemd-timesyncd.service" in ansible_facts.services'
+    - ansible_facts.services["systemd-timesyncd.service"]["status"] != "not-found"
 
 - name: Ensure NTP is running and enabled as configured.
   service:
