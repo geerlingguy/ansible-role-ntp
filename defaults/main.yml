@@ -1,6 +1,7 @@
 ---
 ntp_enabled: true
 ntp_timezone: Etc/UTC
+ntp_makestep: "1.0 3"
 
 # ntp_daemon: [various]
 # ntp_package: ntp
