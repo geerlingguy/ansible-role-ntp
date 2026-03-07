@@ -70,6 +70,10 @@ Enable tinker panic, which is useful when running NTP in a VM.
 
 Increase the maximum root distance between the host & the ntp source.
 
+    ntp_makestep: "1.0 3"
+
+Only applies to chrony-based systems (RHEL/CentOS 7+). Has no effect on ntpd-based systems.  The `makestep` directive for chrony. Controls clock stepping behavior — if the offset is larger than the first value (in seconds), the clock will be stepped rather than slewed, but only for the first N updates (second value). Set to `"1.0 -1"` to always step, useful for VMs that may be suspended/resumed with significant drift.
+
 ## Dependencies
 
 None.

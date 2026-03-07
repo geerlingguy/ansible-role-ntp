@@ -12,7 +12,7 @@ driftfile /var/lib/chrony/drift
 
 # Allow the system clock to be stepped in the first three updates
 # if its offset is larger than 1 second.
-makestep 1.0 3
+makestep {{ ntp_makestep }}
 
 # Enable kernel synchronization of the real-time clock (RTC).
 rtcsync
