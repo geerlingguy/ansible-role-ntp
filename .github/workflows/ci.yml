@@ -46,7 +46,6 @@ jobs:
           - ubuntu2204
           - debian13
           - debian12
-          - debian11
 
     steps:
       - name: Check out the codebase.
