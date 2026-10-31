@@ -1,7 +1,7 @@
 ---
-__ntp_daemon: ntpd
+__ntp_daemon: chronyd
 ntp_tzdata_package: timezone
-__ntp_package: ntp
-__ntp_config_file: /etc/ntp.conf
-__ntp_driftfile: /var/lib/ntp/drift/ntp.drift
+__ntp_package: chrony
+__ntp_config_file: /etc/chrony.conf
+__ntp_driftfile: /var/lib/chrony/drift
 ntp_cron_daemon: cron
