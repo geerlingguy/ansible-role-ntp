@@ -42,6 +42,7 @@ jobs:
       matrix:
         distro:
           - rockylinux9
+          - opensuseleap16
           - ubuntu2404
           - ubuntu2204
           - debian13
